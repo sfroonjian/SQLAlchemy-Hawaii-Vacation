@@ -69,8 +69,11 @@ def station():
 @app.route("/api/v1.0/tobs")
 def tobs():
     session = Session(engine)
-    station = session.query(Station.station).all()
+    station = session.query(Measurement.date, Measurement.tobs).\
+        filter().all()
     session.close()
+
+
 
 # # start date page
 # @app.route("/api/v1.0/<start>")
