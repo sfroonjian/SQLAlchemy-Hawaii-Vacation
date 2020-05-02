@@ -22,11 +22,13 @@ Station = Base.classes.station
 app = Flask(__name__)
 
 # Flask Routes
+
+# home page
 @app.route("/")
 def home():
     """List all available api routes."""
     return (
-        f"Welcome to my Hawaii Climate API!"
+        f"Welcome to my Hawaii Climate API!<br/>"
         f"Available Routes:<br/>"
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations"
@@ -35,4 +37,50 @@ def home():
         f"/api/v1.0/<start>/<end>"
     )
 
-    
+# precipiation page
+@app.route("/api/v1.0/precipitation")
+def precipiation():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+    precipitation = session.query(Measurement.date, Measurement.prcp).all()
+    session.close()
+
+    precipitation_list = []
+    for date, prcp in precipitation:
+        precipitation_dict = {}
+        precipitation_dict["date"] = date
+        precipitation_dict["prcp"] = prcp
+        precipitation_list.append(precipitation_dict)
+
+    return jsonify(precipitation_list)
+
+# station page
+# Return a JSON list of stations from the dataset
+@app.route("/api/v1.0/stations")
+def station():
+    session = Session(engine)
+    station = session.query(Station.station).all()
+    session.close()
+
+    all_stations = list(np.ravel(station))
+    return jsonify(all_stations)
+
+# tobs page
+@app.route("/api/v1.0/tobs")
+def tobs():
+    session = Session(engine)
+    station = session.query(Station.station).all()
+    session.close()
+
+# # start date page
+# @app.route("/api/v1.0/<start>")
+# def start():
+
+
+# # start and end date page
+# @app.route("/api/v1.0/<start>/<end>")
+# def startend():
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
