@@ -69,20 +69,59 @@ def station():
 @app.route("/api/v1.0/tobs")
 def tobs():
     session = Session(engine)
-    station = session.query(Measurement.date, Measurement.tobs).\
-        filter().all()
+    most_active_station = session.query(Measurement.station).\
+        group_by(Measurement.station).\
+        order_by(func.count(Measurement.station).desc()).first()
+    tob_12month = session.query(Measurement.date, Measurement.tobs).\
+        filter(Measurement.station==most_active_station[0]).\
+        filter(Measurement.date > '2016-08-18').\
+        order_by(Measurement.date.desc()).all()
     session.close()
 
+    tobs_list = []
+    for date, tobs in tob_12month:
+        tob_12month_dict = {}
+        tob_12month_dict["date"] = date
+        tob_12month_dict["TOB"] = tobs
+        tobs_list.append(tob_12month_dict)
 
+    return jsonify(tobs_list)
 
-# # start date page
-# @app.route("/api/v1.0/<start>")
-# def start():
+# start date page
+@app.route("/api/v1.0/<start>")
+def start_normals(start):
+    session = Session(engine)
+    temp_normals_start = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+        filter(Measurement.date >= start).all()
+    session.close()
 
+    start_list = []
+    for tmin, tavg, tmax in temp_normals_start:
+        start_list_dict = {}
+        start_list_dict["TMIN"] = tmin
+        start_list_dict["TAVG"] = tavg
+        start_list_dict["TMAX"] = tmax
+        start_list.append(start_list_dict)
 
-# # start and end date page
-# @app.route("/api/v1.0/<start>/<end>")
-# def startend():
+    return jsonify(start_list)
+
+# start and end date page
+@app.route("/api/v1.0/<start>/<end>")
+def startend_normals(start, end):
+    session = Session(engine)
+    temp_normals_startend = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+        filter(Measurement.date >= start).filter(Measurement.date <= end).all()
+    session.close()
+
+    startend_list = []
+    for tmin, tavg, tmax in temp_normals_startend:
+        startend_list_dict = {}
+        startend_list_dict["TMIN"] = tmin
+        startend_list_dict["TAVG"] = tavg
+        startend_list_dict["TMAX"] = tmax
+        startend_list.append(startend_list_dict)
+
+    return jsonify(startend_list)
 
 
 if __name__ == '__main__':
