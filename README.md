@@ -12,7 +12,7 @@ Everyone hopes they have great weather when they go on vacation. It can be hard 
 1. Run the command "python app.py" in your terminal. This will run the file "app.py".
 1. In your broswer, go to "http://localhost:5000" This will bring you to my API homepage.
 1. On the homepage, there will be a list of all the available routes. Go to each one by copy and pasting the route after "http://localhost:5000" in your broswer.
-  1. To access the "/api/v1.0/<star>" and "/api/v1.0/<start>/<end>" routes, enter in dates in place of <start> and <end> in the format "yyyy-mm-dd".
+   1. To access the "/api/v1.0/<star>" and "/api/v1.0/<start>/<end>" routes, enter in dates in place of <start> and <end> in the format "yyyy-mm-dd".
 
 ### Data Collected:
 ![](figures/)
