@@ -15,12 +15,13 @@ Everyone hopes they have great weather when they go on vacation. It can be hard 
    1. To access the "/api/v1.0/<star>" and "/api/v1.0/<start>/<end>" routes, enter in dates in place of <start> and <end> in the format "yyyy-mm-dd".
 
 ### Data Collected:
-![](figures/)
-![](figures/)
-![](figures/)
-![](figures/)
-![](figures/)
-![](figures/)
-![](figures/)
+![](figures/avgprcp_pastyear_df.png)
+![](figures/avgprcp_pastyear_graph.png)
+![](figures/tob_freq.png)
+![](figures/total_trip_temp_avg.png)
+![](figures/stations_data.png)
+![](figures/temp_normals_trip_df.png)
+![](figures/temp_normals_trip_plot.png)
 
 ### Why the data is displayed this way:
+For the average precipitation per day over the past year, I displayed the data first in a dataframe and then in a line graph so users could quickly see which times of the year get the most precipitation. I also found the average precipitation per day by averaging the data from 9 different stations in order to condense the amount of rows in the dataframe and so that there would only be one line in the line graph. The frequency of TOBs at Station USC00519281 is a histogram because it is displaying how often each temperature was observed at that station, which is the most active station in the database. The "Trip Avg Temp" figure is diplaying the average temperature for a given range of dates that the user enters. The error bars on this graph display the range of the high and low temperatures of that same date range. The dataframe about each station is displayed in a dataframe so users can quickly see each station's location and the average precipitation recorded at each. The temperature normals for each day of a given trip is diplayed in both a dataframe and area plot so users can see, based on all the previous years' data, if the dates they want to go on their trip will have favorable conditions and plan accordingly.
