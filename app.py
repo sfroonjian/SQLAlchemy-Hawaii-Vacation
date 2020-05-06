@@ -27,14 +27,14 @@ app = Flask(__name__)
 def home():
     """List all available api routes."""
     return (
-        f"Welcome to my Hawaii Climate API!<br/>"
-        f"Available Routes:<br/>"
-        f"/api/v1.0/precipitation<br/>"
-        f"/api/v1.0/stations<br/>"
-        f"/api/v1.0/tobs<br/>"
-        f"For the following URL, in place of &lt;start&gt;, enter a date in the form yyyy-mm-dd in order to see temperature information for dates from that until the last date given in the dataset."
-        f"/api/v1.0/&lt;start&gt;<br/>"
-        f"For the following URL, in place of &lt;start&gt; and &lt;end&gt;, enter dates in the form yyyy-mm-dd in order to see temperature information for that date range."
+        f"Welcome to my Hawaii Climate API!<br/><br>"
+        f"Available Routes:<br/><br>"
+        f"/api/v1.0/precipitation<br/><br>"
+        f"/api/v1.0/stations<br><br>"
+        f"/api/v1.0/tobs<br/><br>"
+        f"For the following URL, in place of &lt;start&gt;, enter a date in the form yyyy-mm-dd in order to see temperature information for dates from that date until the last date given in the dataset. <br>"
+        f"/api/v1.0/&lt;start&gt;<br/><br>"
+        f"For the following URL, in place of &lt;start&gt; and &lt;end&gt;, enter dates in the form yyyy-mm-dd in order to see temperature information for that date range.<br>"
         f"/api/v1.0/&lt;start&gt;/&lt;end&gt;"
     )
 
