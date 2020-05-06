@@ -32,7 +32,9 @@ def home():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
+        f"For the following URL, in place of &lt;start&gt;, enter a date in the form yyyy-mm-dd in order to see temperature information for dates from that until the last date given in the dataset."
         f"/api/v1.0/&lt;start&gt;<br/>"
+        f"For the following URL, in place of &lt;start&gt; and &lt;end&gt;, enter dates in the form yyyy-mm-dd in order to see temperature information for that date range."
         f"/api/v1.0/&lt;start&gt;/&lt;end&gt;"
     )
 
