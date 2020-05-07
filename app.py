@@ -44,9 +44,9 @@ def home():
 def precipiation():
     session = Session(engine)
     precipitation = session.query(Measurement.date, func.avg(Measurement.prcp)).\
-        filter(Measurement.date > "2016-08-23").\
         group_by(Measurement.date).\
-        order_by(Measurement.date).all()
+        order_by(Measurement.date.desc()).limit(365).all()
+    precipitation
     
     # add all data into a list to be jsonified
     precipitation_list = []
