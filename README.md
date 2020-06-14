@@ -7,7 +7,7 @@ Everyone hopes they have great weather when they go on vacation. It can be hard 
 1. cd into the folder you saved the files in.
 1. Run the command "jupyter notebook". This will open the folder in the Jupyter Notebook website.
 1. Open up the "climate_analysis.ipynb" file on Jupyter Notebook.
-1. At the top, under the "Kernal" tab, click "Restart & Run All". This will run all the cells on the page and display all the dataframes graphs.
+1. At the top, under the "Kernal" tab, click "Restart & Run All". This will run all the cells on the page and display all the dataframes and graphs.
 1. Exit out of Jupyter notebook in your terminal but pressing control+c.
 1. Run the command "python app.py" in your terminal. This will run the file "app.py".
 1. In your broswer, go to "http://localhost:5000" This will bring you to my API homepage.
